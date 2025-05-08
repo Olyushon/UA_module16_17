@@ -2,10 +2,17 @@ using UnityEngine;
 
 public class Dying : IActBehaviour
 {
-    public void Act(GameObject actor, GameObject target, float deltaTime)
-    {
-        Enemy enemy = actor.GetComponent<Enemy>();
+    private GameObject _actor;
 
+    public Dying(GameObject actor)
+    {
+        _actor = actor;
+    }
+
+    public void Update(float deltaTime)
+    {
+        Enemy enemy = _actor.GetComponent<Enemy>();
+        
         if (enemy != null)
             enemy.Die();
     }

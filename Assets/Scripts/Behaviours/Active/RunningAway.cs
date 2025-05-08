@@ -3,11 +3,20 @@ using UnityEngine;
 public class RunningAway : IActBehaviour
 {
     private float _speed = 10f;
+    private GameObject _actor;
+    private GameObject _target; 
 
-    public void Act(GameObject actor, GameObject target, float deltaTime)
+    public RunningAway(GameObject actor, GameObject target)
     {
-        Vector3 direction = (actor.transform.position - target.transform.position).normalized;
-        Vector3 targetPosition = actor.transform.position + direction * _speed;
-        actor.transform.position = Vector3.MoveTowards(actor.transform.position, targetPosition, deltaTime * _speed);
+        _actor = actor;
+        _target = target;
+    }
+    
+    public void Update(float deltaTime)
+    {
+        Vector3 direction = (_actor.transform.position - _target.transform.position).normalized;
+        Vector3 targetPosition = _actor.transform.position + direction * _speed;
+        
+        _actor.transform.position = Vector3.MoveTowards(_actor.transform.position, targetPosition, deltaTime * _speed);
     }
 }

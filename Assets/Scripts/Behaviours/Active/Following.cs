@@ -1,13 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Following : IActBehaviour
 {
     private float _speed = 10f;
+    private GameObject _actor;
+    private GameObject _target;
 
-    public void Act(GameObject actor, GameObject target, float deltaTime)
+    public Following(GameObject actor, GameObject target)
     {
-        actor.transform.position = Vector3.MoveTowards(actor.transform.position, target.transform.position, deltaTime * _speed);
+        _actor = actor;
+        _target = target;
+    }   
+
+    public void Update(float deltaTime)
+    {
+        _actor.transform.position = Vector3.MoveTowards(_actor.transform.position, _target.transform.position, deltaTime * _speed);
     }
 }

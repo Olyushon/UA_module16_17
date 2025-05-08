@@ -10,30 +10,23 @@ public class ReactableObject : MonoBehaviour
 
     private bool isActivated = false;
 
-    public void Initialize(Configuration configuration, GameObject actionTarget)
+    public void Initialize(IRestBehaviour restBehaviour, IActBehaviour actBehaviour)
     {
-        _restBehaviour = configuration.GetRestBehaviour();
-        _actBehaviour = configuration.GetActBehaviour();
-        _actionTarget = actionTarget;
+        _restBehaviour = restBehaviour;
+        _actBehaviour = actBehaviour;
     }
 
     private void Update()
     {
-        if (isActivated)
-            Act();
-        else
-            Rest();
-    }
-
-    private void Rest()
-    {
-        if (_restBehaviour != null)
-            _restBehaviour.Rest(gameObject, Time.deltaTime);
-    }
-    private void Act()
-    {
-        if (_actBehaviour != null)
-            _actBehaviour.Act(gameObject, _actionTarget, Time.deltaTime);
+        if (isActivated) {
+            if (_actBehaviour != null)
+                _actBehaviour.Update(Time.deltaTime);
+        }
+        else 
+        {
+            if (_restBehaviour != null)
+                _restBehaviour.Update(Time.deltaTime);
+        }
     }
 
     public void Activate()
