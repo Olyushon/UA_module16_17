@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Patroling : IRestBehaviour
+public class Patroling : IBehaviour
 {
     private float _speed = 10f;
     private GameObject _actor;

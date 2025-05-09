@@ -4,37 +4,32 @@ using UnityEngine;
 
 public class ReactableObject : MonoBehaviour
 {
-    private IRestBehaviour _restBehaviour;
-    private IActBehaviour _actBehaviour;
+    private IBehaviour _restBehaviour;
+    private IBehaviour _actBehaviour;
     private GameObject _actionTarget;
 
-    private bool isActivated = false;
+    private IBehaviour _currentBehaviour;
 
-    public void Initialize(IRestBehaviour restBehaviour, IActBehaviour actBehaviour)
+    public void Initialize(IBehaviour restBehaviour, IBehaviour actBehaviour)
     {
         _restBehaviour = restBehaviour;
         _actBehaviour = actBehaviour;
+
+        _currentBehaviour = _restBehaviour;
     }
 
     private void Update()
     {
-        if (isActivated) {
-            if (_actBehaviour != null)
-                _actBehaviour.Update(Time.deltaTime);
-        }
-        else 
-        {
-            if (_restBehaviour != null)
-                _restBehaviour.Update(Time.deltaTime);
-        }
+        if (_currentBehaviour != null)
+            _currentBehaviour.Update(Time.deltaTime);
     }
 
     public void Activate()
     {
-        isActivated = true;
+        _currentBehaviour = _actBehaviour;
     }
     public void Deactivate()
     {
-        isActivated = false;
+        _currentBehaviour = _restBehaviour;
     }
 }

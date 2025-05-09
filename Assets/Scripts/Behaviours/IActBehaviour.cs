@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IRestBehaviour
+public interface IBehaviour
 {
     void Update(float deltaTime);
 }

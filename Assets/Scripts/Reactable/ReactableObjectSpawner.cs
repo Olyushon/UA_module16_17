@@ -19,15 +19,15 @@ public class ReactableObjectSpawner : MonoBehaviour
             {
                 ReactableObject reactableObject = Instantiate(_reactableObjectPrefab, spawnPoint.transform.position, Quaternion.identity);
                 
-                IRestBehaviour restBehaviour = GetRestBehaviour(configuration.RestStrategy, reactableObject.gameObject);
-                IActBehaviour actBehaviour = GetActBehaviour(configuration.ActStrategy, reactableObject.gameObject);
+                IBehaviour restBehaviour = GetRestBehaviour(configuration.RestStrategy, reactableObject.gameObject);
+                IBehaviour actBehaviour = GetActBehaviour(configuration.ActStrategy, reactableObject.gameObject);
                 
                 reactableObject.Initialize(restBehaviour, actBehaviour);
             }
         }
     }
 
-    private IRestBehaviour GetRestBehaviour(RestStrategies restStrategy, GameObject actor)
+    private IBehaviour GetRestBehaviour(RestStrategies restStrategy, GameObject actor)
     {
         switch (restStrategy)
         {
@@ -44,7 +44,7 @@ public class ReactableObjectSpawner : MonoBehaviour
                 return null;
         }
     }
-    private IActBehaviour GetActBehaviour(ActStrategies actStrategy, GameObject actor)
+    private IBehaviour GetActBehaviour(ActStrategies actStrategy, GameObject actor)
     {
         switch (actStrategy)
         {

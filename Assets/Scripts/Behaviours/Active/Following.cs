@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Following : IActBehaviour
+public class Following : IBehaviour
 {
     private float _speed = 10f;
     private GameObject _actor;

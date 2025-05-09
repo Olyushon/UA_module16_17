@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RunningAway : IActBehaviour
+public class RunningAway : IBehaviour
 {
     private float _speed = 10f;
     private GameObject _actor;

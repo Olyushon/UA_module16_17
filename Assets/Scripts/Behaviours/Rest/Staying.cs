@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Staying : IRestBehaviour
+public class Staying : IBehaviour
 {
     public Staying() {}
 

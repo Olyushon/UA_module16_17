@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Dying : IActBehaviour
+public class Dying : IBehaviour
 {
     private GameObject _actor;
 

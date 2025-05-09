@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RandomWalking : IRestBehaviour
+public class RandomWalking : IBehaviour
 {
     private float _speed = 10f;
     private GameObject _actor;
